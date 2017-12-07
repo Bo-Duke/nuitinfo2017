@@ -11,13 +11,12 @@
       :clickable="true"
       :draggable="false"
     ></gmap-marker>
-    <gmap-user-position
-  />
   </gmap-map>
 </template>
 
 <script>
 export default {
+  props: ['role'],
   data() {
     return {
       center: { lat: 0, lng: 0 },
@@ -62,7 +61,7 @@ export default {
       navigator.geolocation.getCurrentPosition(data => {
         this.marker = {
           position: { lat: data.coords.latitude, lng: data.coords.longitude },
-          icon: require('../assets/position.png'),
+          icon: require(`../assets/position-${this.role}.png`),
         };
         this.center = this.marker.position;
       });

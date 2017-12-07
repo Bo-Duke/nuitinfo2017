@@ -13,9 +13,16 @@ export default new Router({
       component: HelloWorld,
     },
     {
-      path: '/map',
+      path: '/map/driver',
       name: 'Map',
       component: Map,
+      props: { role: 'driver' },
+    },
+    {
+      path: '/map/drunk',
+      name: 'Map',
+      component: Map,
+      props: { role: 'drunk' },
     },
   ],
 });
