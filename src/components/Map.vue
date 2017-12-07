@@ -3,6 +3,7 @@
     class="gmap-map"
     :center="center"
     :zoom="13"
+    :options="mapStyle"
   >
     <gmap-marker
       :position="marker.position"
@@ -10,6 +11,8 @@
       :clickable="true"
       :draggable="false"
     ></gmap-marker>
+    <gmap-user-position
+  />
   </gmap-map>
 </template>
 
@@ -19,6 +22,38 @@ export default {
     return {
       center: { lat: 0, lng: 0 },
       marker: {},
+      mapStyle: {
+        styles: [
+          {
+            stylers: [
+              {
+                hue: '#ff1a00',
+              },
+              {
+                invert_lightness: true,
+              },
+              {
+                saturation: -100,
+              },
+              {
+                lightness: 33,
+              },
+              {
+                gamma: 0.5,
+              },
+            ],
+          },
+          {
+            featureType: 'water',
+            elementType: 'geometry',
+            stylers: [
+              {
+                color: '#2D333C',
+              },
+            ],
+          },
+        ],
+      },
     };
   },
 
