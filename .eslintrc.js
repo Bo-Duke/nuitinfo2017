@@ -31,6 +31,7 @@ module.exports = {
         vue: 'never',
       },
     ],
+    'linebreak-style': 'off',
     // allow optionalDependencies
     'import/no-extraneous-dependencies': [
       'error',
