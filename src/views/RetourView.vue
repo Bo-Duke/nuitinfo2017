@@ -2,28 +2,26 @@
   <div>
     <div>
         <h2>Retour à la maison
-            <button class="imageButton">
-                <img @click="setArrivee" :src="require('@/assets/house.png')" class="houseImage">
+            <button @click="setArriveeMaison" class="imageButton">
+                <img :src="require('@/assets/house.png')" class="houseImage">
             </button>
         </h2>
     </div>
     </br>
     
     Une autre adresse ?
-    <input v-on:keyup.enter="localize" v-model="destination" placeholder="Destination" />
-    <button @click="setArrivee" class="imageButton">
+    <input v-on:keyup.enter="setNewArrivee" v-model="destination" placeholder="Destination" />
+    <button @click="setNewArrivee" class="imageButton">
         <img :src="require('@/assets/search.png')" class="searchImage" style="">
     </button>
     </br></br>
-    <MapComponent role="drunk" :destination="destination" :directions="false" class="map"/>
+    <MapComponent role="drunk" :destination.sync="destination" :directions="false" class="map"/>
     </br></br>
 
-    <button @click="cancel" class="actionButton"
-            style="background-color: #EC4125">
+    <button @click="cancel" class="actionButton" style="background-color: #EC4125">
         ANNULER
     </button>
-    <button @click="submit" class="actionButton"
-            style="background-color: #00367C">
+    <button @click="submit" class="actionButton" style="background-color: #00367C">
         GO HOME
     </button>
   </div>
@@ -32,19 +30,21 @@
 <script>
 import MapComponent from '@/components/Map';
 import RetourComponent from '@/components/Retour';
+import { postTrip } from '@/services/api';
+
 export default {
   name: 'RetourView',
   components: { RetourComponent, MapComponent },
   data() {
     return {
-      //something
+      destination: { position: { lat: 0, lon: 0 } },
     };
   },
   methods: {
-    setArrivee() {
-      this.destination = 'position: { lat: 43.6260527, lon: 1.4321067 }';
+    setArriveeMaison() {
+      this.destination = { position: { lat: 43.6260527, lon: 1.4321067 } };
     },
-    localize() {
+    setNewArrivee() {
       // TODO: récupérer les coordonnées depuis l'adresse entrée à la main
     },
     cancel() {
@@ -52,6 +52,16 @@ export default {
     },
     submit() {
       //TODO: envoyer la requête de sam
+      /*if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(data => {
+          const origin = {
+            lat: data.coords.latitude,
+            lng: data.coords.longitude,
+          };
+          const destination = this.selectedAddress.position;
+          postTrip('newTest2', origin, destination);
+        });
+      }*/
     },
   },
 };
@@ -82,8 +92,8 @@ export default {
   vertical-align: middle;
 }
 .map {
-  height: 400px;
-  width: 400px;
+  max-height: 400px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
 }
