@@ -13,7 +13,6 @@ export default {
       userAddress: [
         {
           name: 'Maison',
-          address: '135 Rue Gambetta',
           position: {
             lat: 43.59472239999999,
             lng: 1.4352956999999833,
@@ -21,7 +20,6 @@ export default {
         },
         {
           name: 'Boulot',
-          address: '135 Rue Gambetta',
           position: {
             lat: 43.57938969999999,
             lng: 1.4942346999999927,

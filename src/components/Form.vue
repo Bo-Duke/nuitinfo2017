@@ -1,12 +1,13 @@
 <template>
   <div>
+    <AddAddress v-if="showAddAddress" :handleAddAddress="handleAddAddress" />
     <h3>Bravo ! Vous êtes le Sam de cette soirée. Mais attention, vous êtes donc RESPONSABLE.</h3>
     <label>Départ:</label> <input class="input-start" type="text" value="Ma position" disabled/><br/>
     <label>Arrivée:</label>
     <select v-model="selectedAddress" @change="changeDestination" class="input-address">
         <option v-for="address in userAddress" :key="address.name" :value="address">{{ address.name }}</option>
     </select>
-    <button class="add-address">+</button>
+    <button @click="addAddress" class="add-address">+</button>
     <div class="voiture">
         <h1>Voiture</h1>
         <label>Type carrosserie: </label>
@@ -22,12 +23,14 @@
 
 <script>
 import MapComponent from '@/components/Map';
+import AddAddress from '@/components/AddAddress';
 
 export default {
   props: ['userAddress'],
-  components: { MapComponent },
+  components: { MapComponent, AddAddress },
   data() {
     return {
+      showAddAddress: false,
       showMap: true,
       selectedAddress: this.userAddress[0],
       carrosseries: [
@@ -48,6 +51,13 @@ export default {
     },
     handleLaunch() {
       // do something
+    },
+    handleAddAddress(address) {
+      this.userAddress.push(address);
+      this.showAddAddress = false;
+    },
+    addAddress() {
+      this.showAddAddress = true;
     },
   },
 };

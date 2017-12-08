@@ -5846,6 +5846,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-google-autocomplete@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/vue-google-autocomplete/-/vue-google-autocomplete-1.0.13.tgz#4c85bab3eaa5f5bc441ee20f41da8f20772bb0c0"
+
 vue-hot-reload-api@^2.2.0:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.2.4.tgz#683bd1d026c0d3b3c937d5875679e9a87ec6cd8f"
