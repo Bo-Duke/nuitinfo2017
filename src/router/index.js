@@ -11,7 +11,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
+      name: 'Home',
       component: HelloWorld,
     },
     {
@@ -21,12 +21,12 @@ export default new Router({
     },
     {
       path: '/retour',
-      name: 'Retour',
+      name: 'Rentrer chez soi',
       component: RetourView,
     },
     {
       path: '/form',
-      name: 'Form',
+      name: 'Proposer un covoiturage',
       component: FormView,
     },
   ],
