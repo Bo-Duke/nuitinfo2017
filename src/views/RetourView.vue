@@ -37,12 +37,12 @@ export default {
   components: { RetourComponent, MapComponent },
   data() {
     return {
-      destination: { position: { lat: 0, lon: 0 } },
+      destination: {},
     };
   },
   methods: {
     setArriveeMaison() {
-      this.destination = { position: { lat: 43.6260527, lon: 1.4321067 } };
+      this.destination = { position: { lat: 43.6260527, lng: 1.4321067 } };
     },
     setNewArrivee() {
       // TODO: récupérer les coordonnées depuis l'adresse entrée à la main

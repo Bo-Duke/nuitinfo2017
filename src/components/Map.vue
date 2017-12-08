@@ -88,6 +88,14 @@ export default {
           });
       });
   },
+  updated() {
+    const bounds = new google.maps.LatLngBounds();
+    bounds.extend(this.destination.position);
+    bounds.extend(this.position.position);
+    this.$refs.map.$mapCreated.then(res =>
+      this.$refs.map.$mapObject.fitBounds(bounds)
+    );
+  },
   methods: {
     calculateAndDisplayRoute: (
       directionsService,
