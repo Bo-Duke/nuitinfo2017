@@ -7,8 +7,13 @@
     :options="mapStyle"
   >
     <gmap-marker
-      :position="marker.position"
-      :icon.sync="marker.icon"
+      :position="position.position"
+      :icon.sync="position.icon"
+      :clickable="true"
+      :draggable="false"
+    ></gmap-marker>
+    <gmap-marker
+      :position="destination.position"
       :clickable="true"
       :draggable="false"
     ></gmap-marker>
@@ -17,11 +22,11 @@
 
 <script>
 export default {
-  props: ['role'],
+  props: ['role', 'destination', 'directions', 'steps'],
   data() {
     return {
       center: { lat: 0, lng: 0 },
-      marker: {
+      position: {
         position: { lat: 0, lng: 0 },
       },
       mapStyle: {
@@ -62,23 +67,24 @@ export default {
   mounted() {
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(data => {
-        this.marker = {
+        this.position = {
           position: { lat: data.coords.latitude, lng: data.coords.longitude },
-          icon: require(`../assets/position-${this.role}.png`),
+          icon: require(`@/assets/position-${this.role}.png`),
         };
-        this.center = this.marker.position;
-        this.$refs.map.$mapCreated.then(res => {
-          const directionsService = new google.maps.DirectionsService();
-          const directionsDisplay = new google.maps.DirectionsRenderer({
-            map: this.$refs.map.$mapObject,
+        this.center = this.position.position;
+        if (this.directions)
+          this.$refs.map.$mapCreated.then(res => {
+            const directionsService = new google.maps.DirectionsService();
+            const directionsDisplay = new google.maps.DirectionsRenderer({
+              map: this.$refs.map.$mapObject,
+            });
+            this.calculateAndDisplayRoute(
+              directionsService,
+              directionsDisplay,
+              this.position.position,
+              this.destination.position
+            );
           });
-          this.calculateAndDisplayRoute(
-            directionsService,
-            directionsDisplay,
-            this.marker.position,
-            { lat: 43.59472239999999, lng: 1.4352956999999833 }
-          );
-        });
       });
   },
   methods: {
@@ -97,7 +103,6 @@ export default {
           travelMode: google.maps.TravelMode.DRIVING,
         },
         (response, status) => {
-          console.log(status, response);
           if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
           } else {

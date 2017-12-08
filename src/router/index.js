@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import HelloWorld from '@/components/HelloWorld';
 import Map from '@/components/Map';
+import MapView from '@/views/MapView';
 
 Vue.use(Router);
 
@@ -13,16 +14,9 @@ export default new Router({
       component: HelloWorld,
     },
     {
-      path: '/map/driver',
+      path: '/map',
       name: 'Map',
-      component: Map,
-      props: { role: 'driver' },
-    },
-    {
-      path: '/map/drunk',
-      name: 'Map',
-      component: Map,
-      props: { role: 'drunk' },
+      component: MapView,
     },
   ],
 });
