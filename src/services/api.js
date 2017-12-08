@@ -1,6 +1,6 @@
 import { findMatchDomain, postTripDomain } from './domain';
 
-export const findMatch = userId => {
+export const findMatch = (userId, gatherData) => {
   const myInit = {
     method: 'GET',
     mode: 'cors',
@@ -9,7 +9,7 @@ export const findMatch = userId => {
   fetch(findMatchDomain(userId), myInit)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      gatherData(data);
     });
 };
 

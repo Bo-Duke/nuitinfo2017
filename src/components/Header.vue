@@ -1,11 +1,22 @@
 <template>
   <div>
       <h1>{{ this.$route.name }}</h1>
+      <h3>Your user id: {{ this.uid }}</h3>
   </div>
 </template>
 
 <script>
-export default {};
+import authService from '@/services/auth';
+export default {
+  data() {
+    return {
+      uid: 'uid'
+    };
+  },
+  created() {
+    setTimeout(() => {this.uid = authService.user.uid}, 200);
+  }
+};
 </script>
 
 <style scoped>
