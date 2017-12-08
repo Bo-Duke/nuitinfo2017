@@ -17,7 +17,8 @@
         <label>Couleur: </label><input type="text" />
     </div>
     <MapComponent v-if="showMap" class="mapcomponent" role="driver" :destination.sync="selectedAddress" :directions="true" height="150px"/>
-    <button @click="handleLaunch" class="validate-button">Lancer trajet</button>
+    <button @click="handleCancel" class="validate-button">Annuler</button>
+    <button @click="handleLaunch" class="cancel-button">Lancer trajet</button>
   </div>
 </template>
 
@@ -59,9 +60,12 @@ export default {
             lng: data.coords.longitude,
           };
           const destination = this.selectedAddress.position;
-          postTrip(authService.user.uid, origin, destination, 'Sam' );
+          postTrip(authService.user.uid, origin, destination, 'Sam');
         });
       }
+    },
+    handleCancel() {
+      this.$router.push('/');
     },
     handleAddAddress(address) {
       this.userAddress.push(address);
@@ -115,6 +119,13 @@ export default {
 .validate-button {
   margin-top: 15px;
   background-color: #00367c;
+  color: white;
+  font-size: 1.2em;
+}
+
+.cancel-button {
+  margin-top: 15px;
+  background-color: #ec4125;
   color: white;
   font-size: 1.2em;
 }

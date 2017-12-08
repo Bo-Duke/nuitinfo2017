@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     cancel() {
-      // TODO: annuler la requête de sam
+      this.$router.push('/');
     },
   },
 };
