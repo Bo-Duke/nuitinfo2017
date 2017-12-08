@@ -1,6 +1,7 @@
 <template>
   <gmap-map
     class="gmap-map"
+    ref="map"
     :center="center"
     :zoom="13"
     :options="mapStyle"
@@ -20,7 +21,9 @@ export default {
   data() {
     return {
       center: { lat: 0, lng: 0 },
-      marker: {},
+      marker: {
+        position: { lat: 0, lng: 0 },
+      },
       mapStyle: {
         styles: [
           {
@@ -64,7 +67,45 @@ export default {
           icon: require(`../assets/position-${this.role}.png`),
         };
         this.center = this.marker.position;
+        this.$refs.map.$mapCreated.then(res => {
+          const directionsService = new google.maps.DirectionsService();
+          const directionsDisplay = new google.maps.DirectionsRenderer({
+            map: this.$refs.map.$mapObject,
+          });
+          this.calculateAndDisplayRoute(
+            directionsService,
+            directionsDisplay,
+            this.marker.position,
+            { lat: 43.59472239999999, lng: 1.4352956999999833 }
+          );
+        });
       });
+  },
+  methods: {
+    calculateAndDisplayRoute: (
+      directionsService,
+      directionsDisplay,
+      pointA,
+      pointB
+    ) => {
+      directionsService.route(
+        {
+          origin: pointA,
+          destination: pointB,
+          avoidTolls: true,
+          avoidHighways: false,
+          travelMode: google.maps.TravelMode.DRIVING,
+        },
+        (response, status) => {
+          console.log(status, response);
+          if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        }
+      );
+    },
   },
 };
 </script>
