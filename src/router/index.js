@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld';
+import RoleSelection from '@/components/RoleSelection';
 import MapView from '@/views/MapView';
 import RetourView from '@/views/RetourView';
 import FormView from '@/views/FormView';
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: HelloWorld,
+      name: 'Accueil',
+      component: RoleSelection,
     },
     {
       path: '/map',
