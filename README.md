@@ -1,23 +1,25 @@
 # SAM SAM CAR
 
-> Un projet de la nuit de l'info 2017
+Une application web mobile qui permet aux SAM (conducteurs sobres) d'aider des
+personnes ayant trop bu. Un SAM peut indiquer le chemin qu'il emprunte pour
+rentrer chez lui et l'application le met en relation avec des personnes
+alcoolisées. Une personne alcoolisé peut, grâce à une interface très simple,
+demander à un SAM à proximité de l'aider à rentrer chez lui.
+
+## Technologie
+
+L'application a été développée en Single Page App avec Vue.js. Le match entre un
+SAM et une personne alcoolisée se fait grâce à une API Rest en Python.
 
 ## Build Setup
 
 ```bash
-# install dependencies
+# installer les dependances
 npm install
 
-# serve with hot reload at localhost:8080
+# Lancer l'application sur localhost:8080
 npm run dev
 
-# build for production with minification
+# builder pour la prod
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the
-[guide](http://vuejs-templates.github.io/webpack/) and
-[docs for vue-loader](http://vuejs.github.io/vue-loader).
