@@ -15,9 +15,11 @@ Vue.use(VueGoogleMaps, {
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
-new Vue({
+const app = new Vue({
   el: '#app',
   router,
   template: '<App/>',
   components: { App },
 });
+
+export { app };
