@@ -13,11 +13,11 @@ export const findMatch = userId => {
     });
 };
 
-export const postTrip = (userId, origin, destination) => {
+export const postTrip = (userId, origin, destination, status) => {
   const body = JSON.stringify({
     userId,
-    pendingSam: true,
-    pendingDrunk: false,
+    pendingSam: !!(status === 'Sam'),
+    pendingDrunk: !(status === 'Sam'),
     matchedWith: 0,
     origin,
     destination,

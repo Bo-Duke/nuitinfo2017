@@ -24,6 +24,7 @@
 <script>
 import MapComponent from '@/components/Map';
 import AddAddress from '@/components/AddAddress';
+import { postTrip } from '@/services/api';
 
 export default {
   props: ['userAddress'],
@@ -50,7 +51,16 @@ export default {
       }, 200);
     },
     handleLaunch() {
-      // do something
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(data => {
+          const origin = {
+            lat: data.coords.latitude,
+            lng: data.coords.longitude,
+          };
+          const destination = this.selectedAddress.position;
+          postTrip('newTest2', origin, destination);
+        });
+      }
     },
     handleAddAddress(address) {
       this.userAddress.push(address);

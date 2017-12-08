@@ -2,10 +2,10 @@
 
 ## Couleurs
 
-Blue     ```#00367c```
-Green    ```#a6bc29```
+Blue     ```#00367C```
+Green    ```#A6BC29```
 Grey	 ```#37404D```
-Red      ```#ec4125```
+Red      ```#EC4125```
 
 ## Font
 
@@ -20,3 +20,4 @@ Size     ```Super-titre : 32```
 
 House    ```Eleonor Wang```
 Power    ```Dave Gandy```
+Search   ```Freepik```
