@@ -62,7 +62,7 @@ export default {
           const destination = this.selectedAddress.position;
           postTrip('newTest2', origin, destination);
         });
-      }*/
+      } */
     },
   },
 };
