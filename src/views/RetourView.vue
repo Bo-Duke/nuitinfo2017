@@ -48,11 +48,11 @@ export default {
       // TODO: récupérer les coordonnées depuis l'adresse entrée à la main
     },
     cancel() {
-      //TODO: annuler la requête de sam
+      // TODO: annuler la requête de sam
     },
     submit() {
-      //TODO: envoyer la requête de sam
-      /*if (navigator.geolocation) {
+      // TODO: envoyer la requête de sam
+      /* if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(data => {
           const origin = {
             lat: data.coords.latitude,
@@ -61,7 +61,7 @@ export default {
           const destination = this.selectedAddress.position;
           postTrip('newTest2', origin, destination);
         });
-      }*/
+      } */
     },
   },
 };

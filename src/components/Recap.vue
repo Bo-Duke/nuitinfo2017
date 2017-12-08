@@ -1,7 +1,7 @@
 <template>
   <retour
-    class="retour"
-    ref="ret"
+    class="recap"
+    ref="rec"
     :center="center"
     :zoom="13"
   />
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style scoped>
-.retour {
+.recap {
   width: 100%;
   height: 450px;
 }
