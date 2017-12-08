@@ -10,12 +10,12 @@
     </br>
     
     Une autre adresse ?
-    <input v-on:keyup.enter="setNewArrivee" v-model="destination" placeholder="Destination" />
+    <input v-on:keyup.enter="setNewArrivee" disabled placeholder="Destination" />
     <button @click="setNewArrivee" class="imageButton">
         <img :src="require('@/assets/search.png')" class="searchImage" style="">
     </button>
     </br></br>
-    <MapComponent role="drunk" :destination.sync="destination" :directions="false" class="map"/>
+    <MapComponent role="drunk" :destination.sync="destination" :directions="false" height="150px" class="map"/>
     </br></br>
 
     <button @click="cancel" class="actionButton" style="background-color: #EC4125">
@@ -48,9 +48,10 @@ export default {
       // TODO: récupérer les coordonnées depuis l'adresse entrée à la main
     },
     cancel() {
-      //TODO: annuler la requête de sam
+      this.$router.push('/');
     },
     submit() {
+      this.$router.push('recap');
       //TODO: envoyer la requête de sam
       /*if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(data => {
