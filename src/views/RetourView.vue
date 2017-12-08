@@ -10,12 +10,12 @@
     </br>
     
     Une autre adresse ?
-    <input v-on:keyup.enter="setNewArrivee" v-model="destination" placeholder="Destination" />
+    <input v-on:keyup.enter="setNewArrivee" disabled placeholder="Destination" />
     <button @click="setNewArrivee" class="imageButton">
         <img :src="require('@/assets/search.png')" class="searchImage" style="">
     </button>
     </br></br>
-    <MapComponent role="drunk" :destination.sync="destination" :directions="false" class="map"/>
+    <MapComponent role="drunk" :destination.sync="destination" :directions="false" height="150px" class="map"/>
     </br></br>
 
     <button @click="cancel" class="actionButton" style="background-color: #EC4125">
@@ -37,22 +37,23 @@ export default {
   components: { RetourComponent, MapComponent },
   data() {
     return {
-      destination: { position: { lat: 0, lon: 0 } },
+      destination: {},
     };
   },
   methods: {
     setArriveeMaison() {
-      this.destination = { position: { lat: 43.6260527, lon: 1.4321067 } };
+      this.destination = { position: { lat: 43.6260527, lng: 1.4321067 } };
     },
     setNewArrivee() {
       // TODO: récupérer les coordonnées depuis l'adresse entrée à la main
     },
     cancel() {
-      // TODO: annuler la requête de sam
+      this.$router.push('/');
     },
     submit() {
-      // TODO: envoyer la requête de sam
-      /* if (navigator.geolocation) {
+      this.$router.push('recap');
+      //TODO: envoyer la requête de sam
+      /*if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(data => {
           const origin = {
             lat: data.coords.latitude,
