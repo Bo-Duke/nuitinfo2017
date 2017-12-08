@@ -5,6 +5,7 @@
     :center="center"
     :zoom="13"
     :options="mapStyle"
+    :style="{ height }"
   >
     <gmap-marker
       :position="position.position"
@@ -22,7 +23,7 @@
 
 <script>
 export default {
-  props: ['role', 'destination', 'directions', 'steps'],
+  props: ['role', 'destination', 'directions', 'steps', 'height'],
   data() {
     return {
       center: { lat: 0, lng: 0 },
