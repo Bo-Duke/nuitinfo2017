@@ -11,7 +11,8 @@
       v-on:placechanged="getAddressData"
     >
     </VueGoogleAutocomplete><br/>
-    <button class="annuler">Annuler</button><button @click="this.addAddress" class="enregistrer">Enregistrer</button>
+    <button class="actionButton" style="background-color: #ec4125; margin-bottom: 10px">Annuler</button>
+    <button @click="this.addAddress" class="actionButton" style="background-color: #a6bc29">Enregistrer</button>
   </div>
 </template>
 
@@ -69,13 +70,13 @@ export default {
   color: white;
 }
 
-.enregistrer {
-  background-color: #a6bc29;
-}
-
-.annuler {
-  background-color: #ec4125;
-  margin-bottom: 10px;
+.actionButton {
+  border: none;
+  color: white;
+  font: 16px roboto, arial;
+  height: 40px;
+  width: 100px;
+  cursor: pointer;
 }
 
 .address-input {
