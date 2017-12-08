@@ -5,6 +5,7 @@ import MapView from '@/views/MapView';
 import RetourView from '@/views/RetourView';
 import FormView from '@/views/FormView';
 import RecapView from '@/views/RecapView';
+import Login from '@/components/Login';
 
 Vue.use(Router);
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/recap',
       name: 'Recap',
       component: RecapView,
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login,
     },
   ],
 });
