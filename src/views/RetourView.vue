@@ -30,6 +30,7 @@
 <script>
 import MapComponent from '@/components/Map';
 import RetourComponent from '@/components/Retour';
+import authService from '@/services/auth';
 import { postTrip } from '@/services/api';
 
 export default {
@@ -51,18 +52,18 @@ export default {
       this.$router.push('/');
     },
     submit() {
-      this.$router.push('recap');
-      //TODO: envoyer la requête de sam
-      /*if (navigator.geolocation) {
+
+      if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(data => {
           const origin = {
             lat: data.coords.latitude,
             lng: data.coords.longitude,
           };
-          const destination = this.selectedAddress.position;
-          postTrip('newTest2', origin, destination);
+          const destination = this.destination.position;
+          postTrip(authService.user.uid, origin, destination, 'Drunk');
+          this.$router.push('recap');
         });
-      } */
+      }
     },
   },
 };
