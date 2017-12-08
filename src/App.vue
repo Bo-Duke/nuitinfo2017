@@ -7,10 +7,17 @@
 
 <script>
 import HeaderComponent from '@/components/Header';
+import authService from '@/services/auth'
 
 export default {
   name: 'app',
   components: { HeaderComponent },
+  data: function() {
+    return {
+      auth: authService,
+      db: null,
+    };
+  },
 };
 </script>
 

@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import authService from '@/services/auth'
+
 export default {
   data: function() {
     return {
@@ -43,21 +45,20 @@ export default {
   props: ['firebaseAuth'],
   methods: {
     signin() {
-      let context = this;
-      this.firebaseAuth
-        .signInWithEmailAndPassword(this.email, this.pwd)
-        .then(function() {
-          context.$router.push('/login');
-        });
+      authService.login(this.email, this.pwd, this.$router.push('/'))
     },
-    mounted: function() {
+  },
+  mounted: function() {
+      //console.log("TEEEEEST")
       //Check is the user is already logged in, if yes redirect him to /account
       // if(this.authCurrentUser !== null) {
       //     this.$router.push('/boards')
       // }
-      console.log('user', this.firebaseAuth);
+      console.log(authService.user);
+      if(authService.user != null) {
+        this.$router.push('/')
+      }
     },
-  },
 };
 </script>
 

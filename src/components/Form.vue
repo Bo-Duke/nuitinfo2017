@@ -24,6 +24,7 @@
 <script>
 import MapComponent from '@/components/Map';
 import AddAddress from '@/components/AddAddress';
+import authService from '@/services/auth';
 import { postTrip } from '@/services/api';
 
 export default {
@@ -58,7 +59,7 @@ export default {
             lng: data.coords.longitude,
           };
           const destination = this.selectedAddress.position;
-          postTrip('newTest2', origin, destination);
+          postTrip(authService.user.uid, origin, destination, 'Sam' );
         });
       }
     },
